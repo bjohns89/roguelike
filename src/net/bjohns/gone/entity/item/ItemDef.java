@@ -2,8 +2,6 @@ package net.bjohns.gone.entity.item;
 
 /**
  * Created by bjohns on 9/13/16.
- *
- * Gone - GNU License
  */
 public interface ItemDef
 {

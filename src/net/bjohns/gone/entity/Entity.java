@@ -65,6 +65,16 @@ public abstract class Entity
         this.stats = stats;
     }
 
+    public int getItemLevel()
+    {
+        return itemLevel;
+    }
+
+    public void setItemLevel(int itemLevel)
+    {
+        this.itemLevel = itemLevel;
+    }
+
     public String getIcon()
     {
         return icon;
@@ -85,6 +95,16 @@ public abstract class Entity
         this.tag = tag;
     }
 
+    public String getInfo()
+    {
+        return info;
+    }
+
+    public void setInfo(String info)
+    {
+        this.info = info;
+    }
+
     public Color getColor()
     {
         return color;
@@ -103,15 +123,5 @@ public abstract class Entity
     public void setPassable(boolean passable)
     {
         this.passable = passable;
-    }
-
-    public int getItemLevel()
-    {
-        return itemLevel;
-    }
-
-    public void setItemLevel(int itemLevel)
-    {
-        this.itemLevel = itemLevel;
     }
 }

@@ -5,8 +5,6 @@ import java.applet.AudioClip;
 
 /**
  * Created by bjohns on 9/13/16.
- *
- * Gone - GNU License
  */
 public class Sound
 {

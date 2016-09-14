@@ -4,8 +4,6 @@ import net.bjohns.gone.util.Maths;
 
 /**
  * Created by bjohns on 9/13/16.
- *
- * Gone - GNU License
  */
 public class Message
 {

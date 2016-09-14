@@ -7,8 +7,6 @@ import static net.bjohns.gone.Constant.ascii;
 
 /**
  * Created by bjohns on 9/13/16.
- *
- * Gone - GNU License
  */
 public class Weapon extends Equipment
 {

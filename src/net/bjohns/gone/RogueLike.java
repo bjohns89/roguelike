@@ -20,14 +20,14 @@ import static net.bjohns.gone.Constant.VERSION;
  * 0.6.0 -> Dungeon generation: 1:have_faith ;)
  * 0.7.0 -> SaveFile: 1:save_world_load_into,2:bone_files
  */
-public class Gone extends JPanel implements ActionListener
+public class RogueLike extends JPanel implements ActionListener
 {
 
     public static Input input = new Input();
     private Font font = new Font("Verdana", Font.BOLD, 16);
     private Overworld overworld;
 
-    public Gone()
+    public RogueLike()
     {
         int w = 600, h = w / 5 * 4;
         //setPreferredSize(new Dimension(w + 125, h - 40));
@@ -55,7 +55,7 @@ public class Gone extends JPanel implements ActionListener
     {
         JFrame frame = new JFrame(NAME + VERSION);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(new Gone());
+        frame.getContentPane().add(new RogueLike());
 
         frame.pack();
         frame.setResizable(false);

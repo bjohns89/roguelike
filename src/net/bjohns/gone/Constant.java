@@ -4,12 +4,10 @@ import java.awt.*;
 
 /**
  * Created by bjohns on 9/9/16.
- *
- * Gone - GNU License
  */
 public class Constant
 {
-    public static final String VERSION = "0.4.2", NAME = "Gone ";
+    public static final String VERSION = "0.4.2", NAME = "RogueLike ";
     public static final String[] ascii =
             {"~", ".", "}", "^", "@", "(", "/", "!", "&", "*", "?", "#", "+", "p", "f", "g", "d", "b", "o", "d", "i", "h"};
     public static final Color BLACK = new Color(0x25162e);

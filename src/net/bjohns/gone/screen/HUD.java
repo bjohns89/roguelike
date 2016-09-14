@@ -1,7 +1,7 @@
 package net.bjohns.gone.screen;
 
 import net.bjohns.gone.Constant;
-import net.bjohns.gone.Gone;
+import net.bjohns.gone.RogueLike;
 import net.bjohns.gone.entity.item.Item;
 import net.bjohns.gone.entity.mob.Player;
 import net.bjohns.gone.util.Vector;
@@ -14,8 +14,6 @@ import static net.bjohns.gone.util.Maths.isEven;
 
 /**
  * Created by bjohns on 9/10/2016.
- *
- * Gone - GNU License
  */
 public class HUD
 {
@@ -50,8 +48,8 @@ public class HUD
     {
         for (Message m : message)
             m.update();
-        resourceBar(g, 490, 50);
-        stats(g, 490, 100);
+        //  resourceBar(g, 490, 50);
+        // stats(g, 490, 100);
         message(g, 490, 470);
         inventory(g, player.getInventory(), 60, 42);
     }
@@ -94,18 +92,18 @@ public class HUD
         if (HUD.inventory)
         {
             //  Item[] showItems = new Item[4];
-            if (Gone.input.isKeyPressed('x'))
+            if (RogueLike.input.isKeyPressed('x'))
             {
                 HUD.inventory = false;
             }
-            if (Gone.input.isKeyPressed('s'))
+            if (RogueLike.input.isKeyPressed('s'))
             {
                 index++;
                 if (index >= inventory.size())
                 {
                     index = inventory.size();
                 }
-            } else if (Gone.input.isKeyPressed('w'))
+            } else if (RogueLike.input.isKeyPressed('w'))
             {
                 index--;
                 if (index < 0)
@@ -117,10 +115,10 @@ public class HUD
             g.fillRect(vector.x + x, vector.y + y, paneWidth, paneHeight);
             g.setColor(Constant.WHITE);
             for (int i = 0; i < MAX_ITEMS_SHOWN; i++)
-                g.drawString(inventory.get(index + i) + "", 30 + vector.x + x, 50 + vector.y + y + (20) * i);
+                g.drawString(inventory.get(index + i).getInfo() + "", 30 + vector.x + x, 50 + vector.y + y + (20) * i);
         } else
         {
-            if (Gone.input.isKeyPressed('x'))
+            if (RogueLike.input.isKeyPressed('x'))
             {
                 HUD.inventory = true;
                 index = 0;
@@ -139,10 +137,10 @@ public class HUD
 
     private void debug()
     {
-        if (Gone.input.isKeyPressed('z'))
+        if (RogueLike.input.isKeyPressed('z'))
         {
             player.takeDamage(5);
-        } else if (Gone.input.isKeyPressed('x'))
+        } else if (RogueLike.input.isKeyPressed('x'))
         {
             player.giveHealth(5);
         }

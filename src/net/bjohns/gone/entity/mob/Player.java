@@ -1,6 +1,6 @@
 package net.bjohns.gone.entity.mob;
 
-import net.bjohns.gone.Gone;
+import net.bjohns.gone.RogueLike;
 import net.bjohns.gone.entity.item.equip.armor.Armor;
 import net.bjohns.gone.entity.item.equip.weapon.Weapon;
 import net.bjohns.gone.entity.item.food.Food;
@@ -25,6 +25,7 @@ public class Player extends Mob
         icon = ascii[4];
         tag = "player";
         info = "Foolhardy and impatient.";
+        //Testing inventory
         inventory.add(new Food().createItem(5));
         inventory.add(new Food().createItem(5));
         inventory.add(new Food().createItem(5));
@@ -66,28 +67,28 @@ public class Player extends Mob
         {
             if (query.CanQuary())
             {
-                if (Gone.input.isKeyPressed('c'))
+                if (RogueLike.input.isKeyPressed('c'))
                 {
                     query.setCanQuary(false);
                     Vector v = world.findQuery(query);
                     world.getOverworld()[v.x][v.y].setQuery(null);
-                } else if (Gone.input.isKeyPressed('e'))
+                } else if (RogueLike.input.isKeyPressed('e'))
                 {
                     Vector v = world.findQuery(query);
                     HUD.addMessage(world.getOverworld()[v.x][v.y] + "");
                     System.out.println(world.getOverworld()[v.x][v.y]);
                 }
 
-                if (Gone.input.isKeyPressed('d'))
+                if (RogueLike.input.isKeyPressed('d'))
                 {
                     query.moveQueryX(world, 1);
-                } else if (Gone.input.isKeyPressed('a'))
+                } else if (RogueLike.input.isKeyPressed('a'))
                 {
                     query.moveQueryX(world, -1);
-                } else if (Gone.input.isKeyPressed('w'))
+                } else if (RogueLike.input.isKeyPressed('w'))
                 {
                     query.moveQueryY(world, -1);
-                } else if (Gone.input.isKeyPressed('s'))
+                } else if (RogueLike.input.isKeyPressed('s'))
                 {
                     query.moveQueryY(world, 1);
                 }
@@ -95,23 +96,23 @@ public class Player extends Mob
             } else
             {
 
-                if (Gone.input.isKeyPressed('d'))
+                if (RogueLike.input.isKeyPressed('d'))
                 {
                     movePlayerX(world, world.getPlayer(), 1);
                     moveWorld = true;
-                } else if (Gone.input.isKeyPressed('a'))
+                } else if (RogueLike.input.isKeyPressed('a'))
                 {
                     movePlayerX(world, world.getPlayer(), -1);
                     moveWorld = true;
-                } else if (Gone.input.isKeyPressed('w'))
+                } else if (RogueLike.input.isKeyPressed('w'))
                 {
                     movePlayerY(world, world.getPlayer(), -1);
                     moveWorld = true;
-                } else if (Gone.input.isKeyPressed('s'))
+                } else if (RogueLike.input.isKeyPressed('s'))
                 {
                     movePlayerY(world, world.getPlayer(), 1);
                     moveWorld = true;
-                } else if (Gone.input.isKeyPressed('c'))
+                } else if (RogueLike.input.isKeyPressed('c'))
                 {
                     query.setCanQuary(true);
                     Vector quaryVec = world.findQuery(query);
