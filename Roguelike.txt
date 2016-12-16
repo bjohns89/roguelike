@@ -1,0 +1,70 @@
+﻿Roguelike - git
+
+
+-------------------------------------------------------------------------------------
+What is a roguelike
+* Grid based motion
+* Perma-death
+* Freedom - no story little plot
+* Turn based
+* Dungeon hack - kill mobs get gear to kill stronger mobs
+* Tactical single player - everything is based on player character
+-------------------------------------------------------------------------------------
+
+
+General
+* Relic > crafted > wilderness
+* Language in dungeons needs to be deciphered won't happen in one play through
+* Bone files to store previous playthroughs and statistics of character
+* Killing “bosses” finishing puzzles finding secrets give word unlock
+* Use examine key and movement key to interact with world
+
+Towns
+* Crafting is done by artisan
+* Talk to npc to get dungeon completion quests - basic tutorial
+
+Player
+* Skills [Vitality(health)-Guile(disarming_traps)-Brawn(Inventory_weight)-Mind(People)]
+* Skills [Vitality(health)-Guile(ranged)-Brawn(melee)-Mind(magik)]
+* Items add to skill level
+* Skills are non combat
+
+Dungeon
+* Single floor 50k - 100k rooms
+* Different types
+* Blessings
+* Hidden rooms
+* Puzzles [torches,destroying,sacrifice[kill near thing]]
+
+Items
+* Items have tiers [old_war,goblin,dragonforged,moonsteel]
+* Consumables
+* Enchanted items come from dungeons [need to unlock ancient phrase for it to be active]
+
+Crafting
+* Use material pieces & gold
+* Artisan specialization
+* Artisans in towns can use materials to craft items
+* Maybe gathering world items for consumable
+
+World
+* Cut into three parts wilderness towns dungeons
+* Prefabs can spawn throughout world
+* 2 bit chunks for easier world lists
+* Mobs moving around
+
+Achievement
+* Different ways of getting killed
+
+Active Effect
+* Last for certain amount of turns
+* Help and hurt
+
+Abilities
+   * Weapons have abilities % to activate on attack or use
+
+Combat
+   * Armor classes - [cloth_1,leather_2,plate_3]
+   * Range combat [5x5]
+   * Keep numbers low
+   * D10 < armor 75%blocked || d20 is 20 attack + d3 || d10-(armor)

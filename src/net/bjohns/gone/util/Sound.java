@@ -8,38 +8,38 @@ import java.applet.AudioClip;
  */
 public class Sound
 {
-    public static Sound attackOne = new Sound("/sound/attack_1.wav");
-    public static Sound attackTwo = new Sound("/sound/attack_2.wav");
-    public static Sound explosion = new Sound("/sound/explosion.wav");
-    public static Sound select = new Sound("/sound/select.wav");
+  public static Sound attackOne = new Sound("/sound/attack_1.wav");
+  public static Sound attackTwo = new Sound("/sound/attack_2.wav");
+  public static Sound explosion = new Sound("/sound/explosion.wav");
+  public static Sound select = new Sound("/sound/select.wav");
 
-    private AudioClip clip;
+  private AudioClip clip;
 
-    private Sound(String name)
+  private Sound(String name)
+  {
+    try
     {
-        try
-        {
-            clip = Applet.newAudioClip(Sound.class.getResource(name));
-        } catch (Throwable e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    public void play()
+      clip = Applet.newAudioClip(Sound.class.getResource(name));
+    } catch (Throwable e)
     {
-        try
-        {
-            new Thread()
-            {
-                public void run()
-                {
-                    clip.play();
-                }
-            }.start();
-        } catch (Throwable e)
-        {
-            e.printStackTrace();
-        }
+      e.printStackTrace();
     }
+  }
+
+  public void play()
+  {
+    try
+    {
+      new Thread()
+      {
+        public void run()
+        {
+          clip.play();
+        }
+      }.start();
+    } catch (Throwable e)
+    {
+      e.printStackTrace();
+    }
+  }
 }

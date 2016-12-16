@@ -5,51 +5,38 @@ package net.bjohns.gone.entity.item;
  */
 public interface ItemDef
 {
+  public enum ConsumableType
+  {
+    FOOD, ALCHEMICAL
+  }
 
-    enum ItemType
+  public enum EquipType
+  {
+    LEGS("Chaps"), CHEST("Tunic"), WEAPON("weapon");
+
+    public String name;
+
+    EquipType(String name)
     {
-        BOW("bow"), STAFF("staff"), AXE("axe"), CHEST("chest"), LEGS("pantaloon");
+      this.name = name;
+    }
+  }
 
-        public String tag;
+  public enum ItemTier
+  {
+    FIRST_WAR(1, 2, "First War"), GOBLIN_METAL(2, 4, "Goblin Metal"),
+    MOON_STEEL(3, 8, "Moon Steel"),
+    DRAGON_FORGE(4, 10, "Dragon Forged");
 
-        ItemType(String tag)
-        {
-            this.tag = tag;
-        }
+    public int tier, baseDamage;
+    public String name;
+
+    ItemTier(int tier, int base, String name)
+    {
+      this.tier = tier;
+      this.baseDamage = base;
+      this.name = name;
     }
 
-    enum FoodType
-    {
-        POTION("potion"), FOOD("food");
-
-        public String tag;
-
-        FoodType(String tag)
-        {
-            this.tag = tag;
-        }
-    }
-
-    enum ArmorType
-    {
-        CLOTH("cloth"), LEATHER("leather"), PLATE("plate");
-        public String tag;
-
-        ArmorType(String tag)
-        {
-            this.tag = tag;
-        }
-    }
-
-    enum Effect
-    {
-        SHOOT("shoot"), MAGIC("magic"), SLASH("slash"), HEAL("heal");
-
-        public String tag;
-
-        Effect(String tag)
-        {
-            this.tag = tag;
-        }
-    }
+  }
 }

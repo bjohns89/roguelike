@@ -7,9 +7,10 @@ import net.bjohns.gone.entity.Entity;
  */
 public class Obstacle extends Entity
 {
-    @Override
-    public void update()
-    {
 
-    }
+  @Override
+  public void update()
+  {
+
+  }
 }

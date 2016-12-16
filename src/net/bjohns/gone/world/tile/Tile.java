@@ -1,11 +1,10 @@
 package net.bjohns.gone.world.tile;
 
+import java.awt.Color;
 import net.bjohns.gone.Constant;
 import net.bjohns.gone.entity.Entity;
-import net.bjohns.gone.screen.Query;
 import net.bjohns.gone.util.Vector;
-
-import java.awt.*;
+import net.bjohns.gone.world.Query;
 
 import static net.bjohns.gone.Constant.WHITE;
 
@@ -15,158 +14,157 @@ import static net.bjohns.gone.Constant.WHITE;
 public class Tile
 {
 
-    private boolean passable, uncovered;
-    private Vector vector;
-    private String icon, tag;
-    private Color color;
-    private int height;
-    private Entity entity;
-    private Query query;
+  private boolean passable, uncovered;
+  private Vector vector;
+  private String icon, tag;
+  private Color color;
+  private int height;
+  private Entity entity;
+  private Query query;
 
-    public Tile(int height, Vector vector)
+  public Tile(int height, Vector vector)
+  {
+    this.height = height;
+    this.vector = vector;
+    passable = true;
+    entity = null;
+    query = null;
+    icon = "?";
+    tag = "";
+    color = WHITE;
+  }
+
+  public void update()
+  {
+    if (entity == null)
     {
-        this.height = height;
-        this.vector = vector;
+      icon = Constant.ascii[height];
+      if (height == 0)
+      {
+        passable = false;
+        tag = "water";
+      } else if (height == 1)
+      {
         passable = true;
-        entity = null;
-        query = null;
-        icon = "?";
-        tag = "";
-        color = WHITE;
-    }
-
-    public void update()
+        tag = "ground";
+      } else if (height == 2)
+      {
+        passable = true;
+        tag = "tree";
+      } else if (height == 3)
+      {
+        passable = false;
+        tag = "rock";
+      } else if (height == 4)
+      {
+        passable = false;
+        tag = "wall";
+      }
+    } else
     {
-        if (entity == null)
-        {
-            icon = Constant.ascii[height];
-            if (height == 0)
-            {
-                passable = false;
-                tag = "water";
-            } else if (height == 1)
-            {
-                passable = true;
-                tag = "ground";
-            } else if (height == 2)
-            {
-                passable = true;
-                tag = "tree";
-
-            } else if (height == 3)
-            {
-                passable = false;
-                tag = "rock";
-            } else if (height == 4)
-            {
-                passable = false;
-                tag = "wall";
-            }
-        } else
-        {
-            icon = entity.getIcon();
-            passable = false;
-        }
+      icon = entity.getIcon();
+      passable = false;
     }
+  }
 
-    public boolean isPassable()
+  public boolean isPassable()
+  {
+    return passable;
+  }
+
+  public void setPassable(boolean passable)
+  {
+    this.passable = passable;
+  }
+
+  public String toString()
+  {
+    if (entity != null)
     {
-        return passable;
+      return /*"[ilevel" + entity.getItemLevel() +
+                    "]" +*/ entity + "";
     }
 
-    public void setPassable(boolean passable)
-    {
-        this.passable = passable;
-    }
+    return tag;
+  }
 
-    public String toString()
-    {
-        if (entity != null)
-        {
-            return "[ilevel" + entity.getItemLevel() +
-                    "]" + entity + "";
-        }
+  public boolean isUncovered()
+  {
+    return uncovered;
+  }
 
-        return tag;
-    }
+  public void setUncovered(boolean uncovered)
+  {
+    this.uncovered = uncovered;
+  }
 
-    public boolean isUncovered()
-    {
-        return uncovered;
-    }
+  public Vector getVector()
+  {
+    return vector;
+  }
 
-    public void setUncovered(boolean uncovered)
-    {
-        this.uncovered = uncovered;
-    }
+  public void setVector(Vector vector)
+  {
+    this.vector = vector;
+  }
 
-    public Vector getVector()
-    {
-        return vector;
-    }
+  public String getIcon()
+  {
+    return icon;
+  }
 
-    public void setVector(Vector vector)
-    {
-        this.vector = vector;
-    }
+  public void setIcon(String icon)
+  {
+    this.icon = icon;
+  }
 
-    public String getIcon()
-    {
-        return icon;
-    }
+  public String getTag()
+  {
+    return tag;
+  }
 
-    public void setIcon(String icon)
-    {
-        this.icon = icon;
-    }
+  public void setTag(String tag)
+  {
+    this.tag = tag;
+  }
 
-    public String getTag()
-    {
-        return tag;
-    }
+  public Color getColor()
+  {
+    return color;
+  }
 
-    public void setTag(String tag)
-    {
-        this.tag = tag;
-    }
+  public void setColor(Color color)
+  {
+    this.color = color;
+  }
 
-    public Color getColor()
-    {
-        return color;
-    }
+  public int getHeight()
+  {
+    return height;
+  }
 
-    public void setColor(Color color)
-    {
-        this.color = color;
-    }
+  public void setHeight(int height)
+  {
+    this.height = height;
+  }
 
-    public int getHeight()
-    {
-        return height;
-    }
+  public Entity getEntity()
+  {
+    return entity;
+  }
 
-    public void setHeight(int height)
-    {
-        this.height = height;
-    }
+  public void setEntity(Entity entity)
+  {
+    this.entity = entity;
+  }
 
-    public Entity getEntity()
-    {
-        return entity;
-    }
+  public Query getQuery()
+  {
+    return query;
+  }
 
-    public void setEntity(Entity entity)
-    {
-        this.entity = entity;
-    }
-
-    public Query getQuery()
-    {
-        return query;
-    }
-
-    public void setQuery(Query query)
-    {
-        this.query = query;
-    }
+  public void setQuery(Query query)
+  {
+    this.query = query;
+  }
 }
