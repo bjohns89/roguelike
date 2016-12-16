@@ -1,127 +1,115 @@
 package net.bjohns.gone.entity;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Created by bjohns on 9/9/16.
  */
 public abstract class Entity
 {
-    public static final int VITALITY = 0, GUILE = 1, MIND = 2, BRAWN = 3, ARMOR = 4;
+  public static final int VITALITY = 0, GUILE = 1, MIND = 2, BRAWN = 3, ARMOR = 4;
 
-    protected int stats[] = {0, 0, 0, 0, 0};
-    protected int itemLevel;
-    protected String icon, tag, info;
-    protected Color color;
-    protected boolean passable;
+  protected int stats[] = {0, 0, 0, 0, 0};
+  protected String icon, tag, info;
+  protected Color color;
+  protected boolean passable;
 
-    public abstract void update();
+  public abstract void update();
 
-    public String stats(int index)
+  public String stats(int index)
+  {
+    switch (index)
     {
-        switch (index)
-        {
-            case 0:
-                return "Vitality:" + stats[0];
-            case 1:
-                return "Guile:" + stats[1];
-            case 2:
-                return "Mind:" + stats[2];
-            case 3:
-                return "Brawn:" + stats[3];
-            case 4:
-                return "Armor:" + stats[4];
-        }
-
-        return "!!BUG!!";
+      case 0:
+        return "Vitality:" + stats[0];
+      case 1:
+        return "Guile:" + stats[1];
+      case 2:
+        return "Mind:" + stats[2];
+      case 3:
+        return "Brawn:" + stats[3];
+      case 4:
+        return "Armor:" + stats[4];
     }
 
-    public String stats()
+    return "!!BUG!!";
+  }
+
+  public String min_stat(int index)
+  {
+    switch (index)
     {
-        return "vitality:"
-                + stats[VITALITY]
-                + " guile:" + stats[GUILE]
-                + " mind:" + stats[MIND]
-                + " brawn:" + stats[BRAWN]
-                + " armor:" + stats[ARMOR];
+      case 0:
+        return "vi: " + stats[VITALITY];
+      case 1:
+        return "gu: " + stats[GUILE];
+      case 2:
+        return "mi: " + stats[MIND];
+      case 3:
+        return "br: " + stats[BRAWN];
+      case 4:
+        return "ar: " + stats[ARMOR];
     }
 
-    public void setStats(int v, int g, int m, int b, int a)
-    {
-        stats[VITALITY] = v;
-        stats[GUILE] = g;
-        stats[MIND] = m;
-        stats[BRAWN] = b;
-        stats[ARMOR] = a;
-    }
+    return "!!BUG!!";
+  }
 
-    public int[] getStats()
-    {
-        return stats;
-    }
+  public String stats()
+  {
+    return "vitality:"
+        + stats[VITALITY]
+        + " guile:" + stats[GUILE]
+        + " mind:" + stats[MIND]
+        + " brawn:" + stats[BRAWN]
+        + " armor:" + stats[ARMOR];
+  }
 
-    public void setStats(int[] stats)
-    {
-        this.stats = stats;
-    }
+  public void setStats(int v, int g, int m, int b, int a)
+  {
+    stats[VITALITY] = v;
+    stats[GUILE] = g;
+    stats[MIND] = m;
+    stats[BRAWN] = b;
+    stats[ARMOR] = a;
+  }
 
-    public int getItemLevel()
-    {
-        return itemLevel;
-    }
+  public int[] getStats()
+  {
+    return stats;
+  }
 
-    public void setItemLevel(int itemLevel)
-    {
-        this.itemLevel = itemLevel;
-    }
+  public void setStats(int[] stats)
+  {
+    this.stats = stats;
+  }
 
-    public String getIcon()
-    {
-        return icon;
-    }
+  public String getIcon()
+  {
+    return icon;
+  }
 
-    public void setIcon(String icon)
-    {
-        this.icon = icon;
-    }
+  public void setIcon(String icon)
+  {
+    this.icon = icon;
+  }
 
-    public String getTag()
-    {
-        return tag;
-    }
+  public Color getColor()
+  {
+    return color;
+  }
 
-    public void setTag(String tag)
-    {
-        this.tag = tag;
-    }
+  public void setColor(Color color)
+  {
+    this.color = color;
+  }
 
-    public String getInfo()
-    {
-        return info;
-    }
+  public boolean isPassable()
+  {
+    return passable;
+  }
 
-    public void setInfo(String info)
-    {
-        this.info = info;
-    }
-
-    public Color getColor()
-    {
-        return color;
-    }
-
-    public void setColor(Color color)
-    {
-        this.color = color;
-    }
-
-    public boolean isPassable()
-    {
-        return passable;
-    }
-
-    public void setPassable(boolean passable)
-    {
-        this.passable = passable;
-    }
+  public void setPassable(boolean passable)
+  {
+    this.passable = passable;
+  }
 }

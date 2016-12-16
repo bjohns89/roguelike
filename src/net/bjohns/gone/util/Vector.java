@@ -5,26 +5,21 @@ package net.bjohns.gone.util;
  */
 public class Vector
 {
-    public int x, y;
+  public int x, y;
 
-    public Vector(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-    }
+  public Vector(int x, int y)
+  {
+    this.x = x;
+    this.y = y;
+  }
 
-    public Vector(Vector vector)
-    {
-        this(vector.x, vector.y);
-    }
+  public Vector()
+  {
+    this(0, 0);
+  }
 
-    public Vector()
-    {
-        this(0, 0);
-    }
-
-    public String toString()
-    {
-        return "[" + x + "," + y + "]";
-    }
+  public String toString()
+  {
+    return "[" + x + "," + y + "]";
+  }
 }

@@ -1,73 +1,80 @@
 package net.bjohns.gone;
 
-import net.bjohns.gone.util.Input;
-import net.bjohns.gone.world.Overworld;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import net.bjohns.gone.screen.gamestate.GameScreen;
+import net.bjohns.gone.screen.gamestate.Screen;
+import net.bjohns.gone.util.Input;
+import net.bjohns.gone.world.OverWorld;
 
 import static net.bjohns.gone.Constant.NAME;
 import static net.bjohns.gone.Constant.VERSION;
 
 /**
  * Created by bjohns on 9/8/16.
- *
- * 0.4.0 -> HUD: 1:inspection,2:health-stats,3:use_from_inv/equip
- * 0.5.0 -> Entity: 1:pathfinding,2:fight,3:take_items,4:talk{quest}
- * 0.6.0 -> Dungeon generation: 1:have_faith ;)
- * 0.7.0 -> SaveFile: 1:save_world_load_into,2:bone_files
  */
 public class RogueLike extends JPanel implements ActionListener
 {
 
-    public static Input input = new Input();
-    private Font font = new Font("Verdana", Font.BOLD, 16);
-    private Overworld overworld;
+  public static Input input = new Input();
+  private Font font = new Font("Verdana", Font.BOLD, 16);
+  private OverWorld overWorld;
+  private GameScreen game;
 
-    public RogueLike()
+  public RogueLike()
+  {
+    int w = 600, h = w / 5 * 4;
+    //System.out.println(w + " " + h);
+    setPreferredSize(new Dimension(w, h));
+    addKeyListener(input);
+    Timer timer = new Timer(25, this);
+    timer.start();
+    setFocusable(true);
+    overWorld = new OverWorld(128);
+    game = new GameScreen(overWorld, Screen.View.GAME);
+    // overWorld.dump();
+  }
+
+  public static void main(String[] args)
+  {
+    JFrame frame = new JFrame(NAME + VERSION);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.getContentPane().add(new RogueLike());
+
+    frame.pack();
+    frame.setResizable(false);
+    frame.setVisible(true);
+    frame.setLocationRelativeTo(null);
+  }
+
+  public void paintComponent(Graphics g)
+  {
+    super.paintComponent(g);
+
+    g.setColor(Constant.BLACK);
+    g.fillRect(0, 0, getWidth(), getHeight());
+
+    g.setFont(font);
+
+    if (Screen.activeView.equals(Screen.View.GAME))
     {
-        int w = 600, h = w / 5 * 4;
-        //setPreferredSize(new Dimension(w + 125, h - 40));
-        setPreferredSize(new Dimension(w + 100, h));
-        addKeyListener(input);
-        Timer timer = new Timer(25, this);
-        timer.start();
-        setFocusable(true);
-        overworld = new Overworld(128);
-        // overworld.dump();
+      game.draw(g);
     }
 
-    public void paintComponent(Graphics g)
-    {
-        super.paintComponent(g);
+    // overWorld.draw(g);
+  }
 
-        g.setColor(Constant.BLACK);
-        g.fillRect(0, 0, getWidth(), getHeight());
-
-        g.setFont(font);
-        overworld.draw(g);
-    }
-
-    public static void main(String[] args)
-    {
-        JFrame frame = new JFrame(NAME + VERSION);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(new RogueLike());
-
-        frame.pack();
-        frame.setResizable(false);
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        input.update();
-        repaint();
-    }
+  @Override
+  public void actionPerformed(ActionEvent e)
+  {
+    input.update();
+    repaint();
+  }
 }
 

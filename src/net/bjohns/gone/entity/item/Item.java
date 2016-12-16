@@ -5,23 +5,29 @@ import net.bjohns.gone.entity.Entity;
 /**
  * Created by bjohns on 9/10/16.
  */
-public class Item extends Entity implements Comparable<Item>, ItemDef
+public class Item extends Entity
 {
-    public Item createItem(int itemlevel)
-    {
-        return this;
-    }
+  public int value, weight, itemLevel;
+  protected String name;
 
-    @Override
-    public void update()
-    {
+  public Item()
+  {
+    name = "Nothing.";
+  }
 
-    }
+  public int applyValue()
+  {
+    return itemLevel * 5;
+  }
 
-    @Override
-    public int compareTo(Item o)
-    {
-        return tag.compareTo(o.tag);
-    }
+  @Override
+  public void update()
+  {
 
+  }
+
+  public String toString()
+  {
+    return name;
+  }
 }
